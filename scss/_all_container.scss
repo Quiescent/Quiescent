@@ -10,11 +10,15 @@
 }
 
 .all_container_qualifications {
-
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-image: url('../img/path.jpg');
-    // height: 4096px;
+    @media #{$mobile_device} {
+        background-image: url('../img/path-mobile.jpg');
+    }
+    @media #{$tablet_device} {
+        background-image: url('../img/path-tablet.jpg');
+    }
     background-color: #1b1112;
     background-repeat: no-repeat;
     background-size: 100%;

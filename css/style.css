@@ -1615,6 +1615,16 @@ h3 {
   background-size: 100%;
   background-position: center top;
 }
+@media (max-width: 767px) {
+  .all_container_qualifications {
+    background-image: url("../img/path-mobile.jpg");
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .all_container_qualifications {
+    background-image: url("../img/path-tablet.jpg");
+  }
+}
 
 .mt-50 {
   margin-top: 50px;
