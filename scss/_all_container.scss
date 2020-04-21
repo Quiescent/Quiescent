@@ -1,4 +1,7 @@
 .all_container_home {
+    -webkit-transform: translateZ(-999px) scale(2);
+    transform: translateZ(-999px) scale(2);
+    z-index: 3;
     background-image: url('../img/mountain-top.jpg');
     background-color: #1b1112;
     background-repeat: no-repeat;
@@ -7,7 +10,11 @@
 }
 
 .all_container_qualifications {
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
     background-image: url('../img/path.jpg');
+    // height: 4096px;
     background-color: #1b1112;
     background-repeat: no-repeat;
     background-size: 100%;
