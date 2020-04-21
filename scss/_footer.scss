@@ -3,7 +3,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background: #040E27;
+    background: #000;
     .footer_top{
         padding-top: 116px;
         padding-bottom: 190px;
@@ -18,7 +18,7 @@
                 font-weight: 400;
                 color: #fff;
                 text-transform: capitalize;
-                margin-bottom: 40px;
+                margin-bottom: 10px;
                 font-family: $font1;
                 @media #{$mobile_device} {
                     margin-bottom: 20px;
@@ -29,7 +29,7 @@
                 font-weight: 400;
                 color: #fff;
                 text-transform: capitalize;
-                margin-bottom: 40px;
+                margin-bottom: 10px;
                 @media #{$mobile_device} {
                     margin-bottom: 20px;
                 }
@@ -78,7 +78,7 @@
         }
     }
     .copy-right_text{
-        padding-bottom: 47px;
+        padding-bottom: 10px;
         .copy_right{
             font-size: 15px;
             color: #596672;

@@ -1,16 +1,11 @@
 .studies_area{
-    padding-top: 300px;
+    margin-top: 5em;
     padding-bottom: 0px;
     position: relative;
-    @media #{$mobile_device} {
-        padding-bottom: 30px;
-        padding-top: 60px;
-    }
-    @media #{$tablet_device} {
-        padding-bottom: 50px;
-        padding-top: 100px;
-    }
     .single_service{
+        background: #d8e2ec;
+        border-radius: 0.5em;
+        padding: 1em;
         @include transition(.3s);
         margin-bottom: 30px;
         @media #{$tablet_device}{
