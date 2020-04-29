@@ -1,0 +1,153 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: How Fontification Works in Emacs
+#+date: <2020-04-21 Tue>
+#+author: Edward John Steere
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 28.0.50 (Org mode 9.3.6)
+
+# To explain that, I need to step back and describe how jit-lock
+# mechanism works, from the display engine POV, and then how the scroll
+# commands work.  (See also a large commentary in keyboard.c around line
+# 250.)
+
+# For simplicity, let's assume we have a buffer with no overlays, no
+# display strings, and no other complications, only faces.  Let's also
+# assume the text is entirely L2R, so we can ignore what bidi.c does.
+
+# When the display engine starts working on displaying a window, it
+# begins from the window-start position, loads all the faces and other
+# display-related stuff, then starts layout by moving one character at a
+# time in the direction of increasing buffer positions, and computing
+# the metrics of each character as determined by the face(s) at each
+# position.  It stops when it gets to a buffer position where the
+# 'fontified' text property changes its value.  If the new value of
+# 'fontified' is nil, the display engine calls fontification-functions.
+# jit-lock adds its function to that hook, so jit-lock is called.  What
+# jit-lock does, in a nutshell, is call the current buffer's
+# fontification function(s) on a chunk of text starting at the position
+# for which it was called, and it puts on that chunk a value of t for
+# the 'fontified' text property.  (Where that chunk ended is the
+# position where the 'fontified' property's value will again change to
+# nil, and if that position is inside the window, jit-lock will be
+# called again when the display engine gets to that position.)  After
+# fontification-functions return, the display engine processes the faces
+# in the chunk that has been fontified; then it continues marching
+# through the buffer.
+
+# Next, I need to describe how scroll commands work.  Assuming you typed
+# C-v, the scroll command computes the new window-start point.  It does
+# so by beginning at the current window-start, then moving through the
+# buffer text until it reaches the point that is N pixels down, where N
+# is the height of the window.  To move through the text, the scroll
+# command uses functions from the display engine that "simulate"
+# display, i.e. they perform the same layout calculations, but don't
+# prepare anything to be sent to the glass.  However -- and this is the
+# important part -- this "display simulation" uses the same code
+# described above that looks for positions where the 'fontified'
+# property is nil and calls fontification-functions to fontify such
+# text.  This is necessary, because fontification can change the metrics
+# of the text on display, and so any pixel-wise calculations and
+# decisions whether given text is or isn't inside a window must be sure
+# the text is fontified and has the right faces in order to produce
+# accurate results.
+
+# When the scroll command is done computing the new window-start point,
+# it sets a special flag telling redisplay to obey that window-start
+# value (otherwise redisplay might decide to compute window-start on its
+# own), and returns.
+
+# Then redisplay kicks in, and does its thing described above.  It will
+# find the entire text until the new window-start already fontified, and
+# also some text after the new window-start (because jit-lock works in
+# chunks, and usually fontifies slightly more than strictly needed).  So
+# displaying the new contents of the window will need to fontify only
+# those parts visible in the window that were not already fontified when
+# the scroll command looked for the new window-start.
+
+# If you lean on C-v, then the scroll command is repeatedly called to
+# find the next window-start, and repeatedly fontifies the text it goes
+# through.  If you scroll N screen-fulls, the fontification of the first
+# N-1 screen-fulls (if they were never displayed before, which happens
+# when you visit a file and immediately start scrolling) is "wasted
+# effort" for the purposes of the final window redisplay, because those
+# N-1 screen-fulls will not be displayed.  Only the fontification of the
+# last screen-full is "useful", because it saves some, sometimes all, of
+# the fontification job of the stuff to be eventually displayed when you
+# stop scrolling.
+
+# Enter fast-but-imprecise-scrolling.  What it does is disable jit-lock
+# during the part where the scroll command walked the buffer to find the
+# next window-start position.  Crucially, it also disables putting the
+# non-nil 'fontified' property on the text traversed by the scroll
+# command (because that is done by jit-lock).  So when you stop
+# scrolling, redisplay of the stuff that ends up in the window will have
+# to fontify all of what is visible in the window.
+
+# Bottom line: fast-but-imprecise-scrolling saves the work of jit-lock
+# when scrolling more than one screen-full, and is more-or-less useless
+# when scrolling one screen-full.  IOW, it is a "solution" for the use
+# case of leaning on C-v or M-v to scroll far into the buffer that was
+# never before displayed.
+
+# Of course, if fast-but-imprecise-scrolling makes the job of scroll
+# commands so much easier that Emacs is capable of keeping up with the
+# keyboard auto-repeat rate, then every screen-full you scroll through
+# _will_ be displayed, and therefore will be fontified by the calls to
+# jit-lock from redisplay itself -- and that will again make scrolling
+# slower.  So fast-but-imprecise-scrolling is most efficient when it
+# makes scroll commands faster, but not too fast...
+
+# Sorry for the long email, I hope this tricky issue is now at least a
+# tad more clear.
+
+
+* Abstract (TL;DR)
+In this article I'm going to do my best to explain how ~font-lock~ and
+more importantly ~jit-font-lock~ works.  This article is based on an
+email by Eli on the Emacs mailing list in which he explains this exact
+thing.  This article intends to augment his explanation with
+pictures(!) and to help disseminate this knowledge to a broader
+audience.
+
+TODO: Complete this with a short description of how it works.
+
+* Introduction
+I follow the [[https://lists.gnu.org/mailman/listinfo/emacs-devel][Emacs mailing list]].  I've found it very useful to
+understand more about Emacs and learn about up coming core features
+before they happen.  If you're not a subscriber yet then I'd highly
+recommend that you check it out!
+
+Recently there's been a long running discussion about ~font-lock~.
+I'll go into some detail a bit later, but for now all that you need to
+know, if you've never heard of it, is that it's the set of Emacs
+libraries and a strategy for highlighting the buffer.
+
+As you might imagine this is becoming more of a hot topic lately as
+editors start to absorb more and more IDE features and we expect them
+to be able to accurately and efficiently highlight our code.  Eli (one
+of the prominent core maintainers) started a thread a while ago in
+which he made the case for the support of a parsing library embedded
+into Emacs so that it could benefit from accurate and fast information
+about the buffer.  This information would be used for various reasons,
+one of which being the ~fontification~ of buffer text.
+
+More recently there was a message lamenting the degradation in
+performance of scrolling since Emacs 23.  The hypothesis has been that
+it's down to ~fontification~ and so the whole discussion about
+parsing, ASTs and ~font-lock~ started up again.
+
+In one of Eli's responses he explained, in pain-staking detail, how
+~jit-font-lock~ (a strategy of ~font-lock~ where it only "fontifies"
+text at the latest possible moment in order to avoid unnecessary
+computation and delays) works and how it ties into the display
+engine.  I thought that it would be great if someone took that
+information and found a way to disseminate it to a broader audience.
+A few days later and here we are.
+
+* 
