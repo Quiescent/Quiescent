@@ -1668,6 +1668,17 @@ h3 {
     background-image: url("../img/Qs-Realm.jpg");
   }
 }
+.all_container_adventures .studies_area .single_service {
+  background: rgba(250, 234, 200, 0.8);
+  border: 2px solid #421b0c;
+  border-radius: 0.5em;
+  padding: 1em;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  margin-bottom: 30px;
+}
 
 .mt-50 {
   margin-top: 50px;
