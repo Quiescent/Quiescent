@@ -1687,7 +1687,7 @@ h3 {
 }
 @media (max-width: 767px) {
   .all_container_adventures {
-    background-image: url("../img/Qs-Realm.jpg");
+    background-image: url("../img/Qs-Realm-mobile.png");
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -5502,12 +5502,7 @@ h6 {
   font-size: 12px;
 }
 
-.mailing_list_section {
-  text-align: center;
-}
-
 .mailing_list_content {
-  display: inline-block;
   background: rgba(250, 234, 200, 0.8);
   border: 2px solid #421b0c;
   border-radius: 0.5em;
