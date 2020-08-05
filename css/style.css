@@ -1053,7 +1053,7 @@ h3 {
 }
 @media (max-width: 767px) {
   .slider_area .single_slider {
-    height: 250px;
+    height: 400px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -1082,6 +1082,7 @@ h3 {
 @media (max-width: 767px) {
   .slider_area .single_slider .slider_text h3 {
     font-size: 25px;
+    letter-spacing: 3px;
     line-height: 35px;
   }
 }
@@ -5511,6 +5512,14 @@ h6 {
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+}
+@media (max-width: 767px) {
+  .mailing_list_content {
+    text-align: center;
+  }
+  .mailing_list_content input[type=submit] {
+    margin-top: 0.5em;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

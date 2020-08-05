@@ -10,4 +10,11 @@
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
+
+    @media #{$mobile_device} {
+        text-align: center;
+        input[type=submit] {
+            margin-top: 0.5em;
+        }
+    }
 }

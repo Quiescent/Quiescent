@@ -9,7 +9,7 @@
         // background: #040E27;
 
         @media #{$mobile_device} {
-            height: 250px;
+            height: 400px;
         }
         @media #{$tablet_device} {
             height: 620px;
@@ -32,19 +32,17 @@
                 line-height: 62px;
                 @media #{$mobile_device} {
                     font-size: 25px;
-                    //    letter-spacing: 3px;
+                    letter-spacing: 3px;
                     line-height: 35px;
                 }
                 @media #{$tablet_device} {
                     font-size: 30px;
                     line-height: 35px;
-
                 }
                 @media #{$mid_device} {
                     font-size: 45px;
                     letter-spacing: 3px;
                     line-height: 55px;
-
                 }
             }
             h4 {
@@ -55,6 +53,7 @@
                 font-weight: 200;
                 line-height: 24px;
                 @media #{$mobile_device} {
+                    
                     font-size: 25px;
                     //    letter-spacing: 3px;
                     line-height: 35px;
