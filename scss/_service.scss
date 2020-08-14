@@ -1,6 +1,6 @@
 .service_area{
     padding-top: 200px;
-    padding-bottom: 300px;
+    padding-bottom: 200px;
     position: relative;
     @media #{$mobile_device} {
         padding-bottom: 30px;
@@ -11,11 +11,12 @@
         padding-top: 100px;
     }
     .single_service{
-        background: #d8e2ec;
+        background-color: rgba(216, 226, 236, 0.9);
         border-radius: 0.5em;
         padding: 1em;
         @include transition(.3s);
         margin-bottom: 30px;
+        height: 100%;
         @media #{$tablet_device}{
             padding: 30px 20px;
         }
