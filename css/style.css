@@ -348,6 +348,40 @@ h3 {
   width: 220px;
 }
 
+.circle-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  padding: 8px;
+  background: #0181F5;
+  color: #fff;
+  display: inline-block;
+  font-family: "Alata", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: 0;
+  border: 1px solid #fff;
+  text-align: center;
+  color: #fff !important;
+  text-transform: capitalize;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.circle-btn:hover {
+  border: 1px solid #fff;
+  color: #0181F5 !important;
+  background: #fff;
+}
+.circle-btn:focus {
+  outline: none;
+}
+.circle-btn.large-width {
+  width: 220px;
+}
+
 .boxed-btn3 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0181f5+0,5db2ff+100 */
   background: #0181F5;
@@ -1078,9 +1112,6 @@ h3 {
   font-size: 80px;
   font-weight: 400;
   line-height: 90px;
-}
-.slider_area .single_slider .slider_text h3 .bigger-font {
-  font-size: 80px;
 }
 @media (max-width: 767px) {
   .slider_area .single_slider .slider_text h3 {
@@ -2454,8 +2485,8 @@ h3 {
   margin-top: 12px;
 }
 .service_area {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   position: relative;
 }
 @media (min-width: 1900px) {
@@ -5549,6 +5580,27 @@ h6 {
   right: 0;
   left: 0;
   color: black;
+}
+
+.centered-heading {
+  text-align: center;
+}
+.centered-heading h3 {
+  color: #fff;
+  text-align: center;
+  font-size: 60px;
+  font-weight: 400;
+  margin-bottom: 52px;
+}
+@media (max-width: 767px) {
+  .centered-heading h3 {
+    font-size: 38px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .centered-heading h3 {
+    font-size: 48px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

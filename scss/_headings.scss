@@ -1,0 +1,16 @@
+.centered-heading {
+    text-align: center;
+    h3 {
+        color: #fff;
+        text-align: center;
+        font-size: 60px;
+        font-weight: 400;
+        margin-bottom: 52px;
+        @media #{$mobile_device} {
+            font-size: 38px;
+        }
+        @media #{$tablet_device} {
+            font-size: 48px;
+        }
+    }
+}

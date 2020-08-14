@@ -25,6 +25,38 @@
         width: 220px;
     }
 }
+.circle-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    padding: 8px;
+    background: #0181F5;
+    color: #fff;
+    display: inline-block;
+    font-family: $font1;
+    font-size: 14px;
+    font-weight: 500;
+    border: 0;
+    border: 1px solid #fff;
+    // width: 180px;
+    text-align: center;
+    color: #fff !important;
+    text-transform: capitalize;
+    @include transition(.5s);
+    cursor: pointer;
+    &:hover{
+        border: 1px solid #fff;
+        color: #0181F5 !important;
+        // border: 1px solid #28AE61;
+        background: #fff ;
+    }
+    &:focus{
+        outline: none;
+    }
+    &.large-width{
+        width: 220px;
+    }
+}
 .boxed-btn3 {
         /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0181f5+0,5db2ff+100 */
     background: #0181F5;
