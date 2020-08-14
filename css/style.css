@@ -1075,9 +1075,12 @@ h3 {
   text-shadow: 0px 0px 10px #000;
   color: #FFF;
   font-family: "Alata", sans-serif;
-  font-size: 50px;
+  font-size: 80px;
   font-weight: 400;
-  line-height: 62px;
+  line-height: 90px;
+}
+.slider_area .single_slider .slider_text h3 .bigger-font {
+  font-size: 80px;
 }
 @media (max-width: 767px) {
   .slider_area .single_slider .slider_text h3 {
@@ -1630,11 +1633,7 @@ h3 {
 }
 
 .all_container_home {
-  background-image: url("../img/mountain-top.jpg");
   background-color: #1b1112;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center top;
 }
 
 .all_container_qualifications {
@@ -5527,6 +5526,25 @@ h6 {
   .mailing_list_content input[type=submit] {
     margin-top: 0.5em;
   }
+}
+
+.mountain_background {
+  background-image: url("../img/mountain-top.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 0;
+  background-position: center top;
+  padding-top: 81.82%;
+}
+
+.absolutely_anchored {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: black;
 }
 
 /*# sourceMappingURL=style.css.map */
