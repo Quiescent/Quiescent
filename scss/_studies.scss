@@ -2,8 +2,12 @@
     margin-top: 5em;
     padding-bottom: 0px;
     position: relative;
+    .row {
+        margin-bottom: 1em;
+    }
     .single_service{
-        background: #d8e2ec;
+        background-color: rgba(216, 226, 236, 0.9);
+        height: 100%;
         border-radius: 0.5em;
         padding: 1em;
         @include transition(.3s);
