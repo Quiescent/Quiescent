@@ -1,32 +1,49 @@
 <!doctype html>
 <html lang="zxx">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Quiescent</title>
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/fonts.css" />
-  </head>
-  <body>
-      <h2>Hello everyone</h2>
-      <h1>
-          My name is<br/>
-          Edward Steere
-      </h1>
-      <div class="buttons">
-          <a href="adventures.html">
-              Writing
-          </a>
-          <a href="qualifications.html">
-              Qualifications
-          </a>
-          <a href="media.html">
-              Media
-          </a>
-          <button class="context-menu">
-              ...
-          </button>
-      </div>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Quiescent</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/fonts.css" />
+        <script src="js/contextMenu.js"></script>
+    </head>
+    <body>
+        <h2>Hello everyone</h2>
+        <h1>
+            My name is<br/>
+            Edward Steere
+        </h1>
+        <div class="buttons">
+            <a href="adventures.html">
+                Writing
+            </a>
+            <a href="qualifications.html">
+                Qualifications
+            </a>
+            <a href="media.html">
+                Media
+            </a>
+            <button class="context-menu">
+                ...
+            </button>
+            <div id="context-menu-menu" class="context-menu-menu">
+                <div class="item">
+                    <a target="_blank" class="circle-btn" href="https://twitter.com/Cerebrete">
+                        <i class="fab fa-twitter fa-1x"></i>&nbsp;Twitter
+                    </a>
+                </div>
+                <div class="item">
+                    <a target="_blank" class="circle-btn" href="https://github.com/Quiescent">
+                        <i class="fab fa-github fa-1x"></i>&nbsp;Github
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script>
+         var contextMenu = createContextMenu('#context-menu-menu', '.context-menu');
+        </script>
+    </body>
 </html>
