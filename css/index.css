@@ -105,3 +105,9 @@ a:hover, button:hover {
 .context-menu {
     width: 52px;
 }
+
+.context-menu-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+}
