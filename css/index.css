@@ -1,0 +1,101 @@
+body {
+    position: absolute;
+    width: 100%;
+    height: 1400px;
+    left: 0px;
+    top: 0px;
+
+    margin: 0px;
+    padding: 0px;
+
+    background: url(../img/mountain-top.jpg);
+    background-color: #1E1213;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    position: absolute;
+    width: 718px;
+    height: 238px;
+    left: 242px;
+    top: 300px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 100px;
+    line-height: 116.18%;
+
+    /* or 116px */
+
+    color: #FFFDFF;
+
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+    position: absolute;
+    width: 559px;
+    height: 126px;
+    left: 242px;
+    top: 200px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 82px;
+
+    color: #4C93FF;
+
+    text-shadow: 0px 0px 20px #000000;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+
+    position: absolute;
+    width: 820px;
+    height: 52px;
+    left: 242px;
+    top: 762px;
+}
+
+button {
+    width: 193px;
+    height: 52px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 116.18%;
+
+    /* or 23px */
+    text-transform: uppercase;
+
+    color: #FFFDFF;
+
+    border: none;
+    background: #26497F;
+    opacity: 0.85;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+
+    transition: background linear 200ms;
+}
+
+button:hover {
+    cursor: pointer;
+    text-shadow: 0px 0px 5px #FFF;
+    box-shadow: none;
+    border: 1px solid #26497F;
+    background: #26497F00;
+    color: #26497F;
+}
+
+.context-menu {
+    width: 52px;
+}
