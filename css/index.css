@@ -1,12 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
 body {
-    position: absolute;
     width: 100%;
-    height: 1400px;
+    height: 100vh;
     left: 0px;
     top: 0px;
 
     margin: 0px;
     padding: 0px;
+
+    font-family: Open Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
 
     background: url(../img/mountain-top.jpg);
     background-color: #1E1213;
@@ -15,17 +26,78 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-h1 {
+/* Buttons start to overlap with me. */
+@media only screen and (max-width: 1850px) {
+    html,
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Buttons start to overlap with me again. */
+@media only screen and (max-width: 1600px) {
+    html,
+    body {
+        font-size: 14px;
+    }
+}
+
+/* Text starts to overlap with me again. */
+@media only screen and (max-width: 1150px) {
+    html,
+    body {
+        font-size: 12px;
+    }
+}
+
+/* Background becomes to small. */
+@media only screen and (max-width: 1060px) {
+    html,
+    body {
+        font-size: 10px;
+
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/mountain-top-narrow.jpg);
+        background-size: cover;
+    }
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-content: left;
     position: absolute;
-    width: 718px;
-    height: 238px;
     left: 242px;
     top: 300px;
+}
 
-    font-family: Open Sans;
-    font-style: normal;
+/* Buttons start to overlap with me again. */
+@media only screen and (max-width: 1250px) {
+    .content-container {
+        left: 121px;
+        top: 150px;
+    }
+}
+
+/* Text starts to overlap with me again. */
+@media only screen and (max-width: 950px) {
+    .content-container {
+        left: 60px;
+        top: 100px;
+    }
+}
+
+/* Background becomes to small. */
+@media only screen and (max-width: 1060px) {
+    .content-container {
+        left: 10%;
+        top: 30%;
+        width: 80%;
+    }
+}
+
+h1 {
     font-weight: 600;
-    font-size: 100px;
+    font-size: 500%;
     line-height: 116.18%;
 
     /* or 116px */
@@ -36,17 +108,8 @@ h1 {
 }
 
 h2 {
-    position: absolute;
-    width: 559px;
-    height: 126px;
-    left: 242px;
-    top: 200px;
-
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 60px;
-    line-height: 82px;
+    font-size: 300%;
+    line-height: 140%;
 
     color: #4C93FF;
 
@@ -57,11 +120,50 @@ h2 {
     display: flex;
     justify-content: space-between;
 
-    position: absolute;
     width: 820px;
     height: 52px;
-    left: 242px;
-    top: 762px;
+
+    margin-top: 60px;
+}
+
+/* Buttons start to overlap with me. */
+@media only screen and (max-width: 1850px) {
+    .buttons {
+        /* I only want every subsequent row to have a margin */
+        margin-top: 40px;
+        width: 600px;
+        flex-wrap: wrap;
+    }
+}
+
+/* Buttons start to overlap with me again. */
+@media only screen and (max-width: 1600px) {
+    .buttons {
+        /* I only want every subsequent row to have a margin */
+        margin-top: 40px;
+        width: 500px;
+        flex-wrap: wrap;
+    }
+}
+
+/* Buttons start to overlap with me again. */
+@media only screen and (max-width: 1400px) {
+    .buttons {
+        /* I only want every subsequent row to have a margin */
+        margin-top: 40px;
+        width: 400px;
+        flex-wrap: wrap;
+    }
+}
+
+/* Background becomes to small. */
+@media only screen and (max-width: 1060px) {
+    .buttons {
+        /* I only want every subsequent row to have a margin */
+        margin-top: 40px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
 }
 
 a, button {
@@ -71,10 +173,8 @@ a, button {
     width: 193px;
     height: 52px;
 
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 100%;
     line-height: 116.18%;
 
     text-decoration: none;
@@ -93,6 +193,24 @@ a, button {
     transition: background linear 200ms;
 }
 
+/* Buttons start to overlap with me. */
+@media only screen and (max-width: 1850px) {
+    a, button {
+        margin-top: 20px;
+    }
+}
+
+/* Buttons start to overlap with me again. */
+@media only screen and (max-width: 1600px) {
+    a, button {
+        width: 123px;
+    }
+}
+
+.context-menu-button {
+    margin-top: 0;
+}
+
 a:hover, button:hover {
     cursor: pointer;
     text-shadow: 0px 0px 5px #FFF;
@@ -109,5 +227,4 @@ a:hover, button:hover {
 .context-menu-menu {
     display: none;
     position: absolute;
-    right: 0;
 }
