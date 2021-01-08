@@ -1,4 +1,4 @@
-function createContextMenu (rootSelector, buttonSelector) {
+function createContextMenu (rootSelector, buttonSelector, placeOnLeft) {
     var contextMenuRoot = document.querySelector(rootSelector);
     var button = document.querySelector(buttonSelector);
 
@@ -23,7 +23,12 @@ function createContextMenu (rootSelector, buttonSelector) {
         } else {
             contextMenuRoot.style.display = '';
         }
-        contextMenuRoot.style.top = box.height + 'px';
+        contextMenuRoot.style.top = box.top - box.height + 'px';
+        if (placeOnLeft) {
+            contextMenuRoot.style.right = window.innerWidth - box.left + 'px';
+        } else {
+            contextMenuRoot.style.left = box.left + box.width + 'px';
+        }
     };
 
     var maybeHideMenu = function (event) {
@@ -42,5 +47,21 @@ function createContextMenu (rootSelector, buttonSelector) {
         maybeHideMenu
     );
 
-    return {};
+    var destroyMenu = function () {
+        button.removeEventListener(
+            'click',
+            toggleVisibility
+        );
+        document.removeEventListener(
+            'click',
+            maybeHideMenu
+        );
+        contextMenuRoot.style.top = '';
+        contextMenuRoot.style.left = '';
+        contextMenuRoot.style.right = '';
+    };
+
+    return {
+        destroyMenu: destroyMenu
+    };
 }
