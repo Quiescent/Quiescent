@@ -16,18 +16,28 @@ var createSectionScroller = function(rootSelector) {
 
     var activeIndex = 0;
 
+    var currentElementClassList = function () {
+        return document
+            .querySelector('#' + sectionIds[activeIndex])
+            .classList;
+    };
+
     var activateCurrent = function () {
         sectionIds
             .forEach(function (id) {
-                document
+                var classList = document
                     .querySelector('#' + id)
-                    .classList
-                    .add('hidden');
+                    .classList;
+                if (classList.contains('slide-in')) {
+                    classList.add('slide-out');
+                    classList.remove('slide-in');
+                } else {
+                    classList.remove('slide-out');
+                }
+                classList.add('hidden');
             });
-        document
-            .querySelector('#' + sectionIds[activeIndex])
-            .classList
-            .remove('hidden');
+        currentElementClassList().remove('hidden');
+        currentElementClassList().add('slide-in');
     };
 
     activateCurrent();
