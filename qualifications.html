@@ -13,6 +13,9 @@
     <body>
         <h1>Qualifications</h1>
         <div class="sections" id="sections">
+            <div class="controls top-controls">
+                <div id="previous-button"></div>
+            </div>
             <section class="hidden animated" id="msc">
                 <h2>Msc. Electrical Engineering<br/>(with distinction)</h2>
                 <h3>Qualified in 2016</h3>
@@ -72,9 +75,12 @@
             <section class="hidden animated" id="highschool">
                 <h2>highschool</h2>
             </section>
+            <div class="controls bottom-controls">
+                <div id="next-button"></div>
+            </div>
         </div>
         <script>
-         var sectionScroller = createSectionScroller('#sections');
+         var sectionScroller = createSectionScroller('#sections', '#next-button', '#previous-button');
         </script>
     </body>
 </html>
