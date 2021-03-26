@@ -1,5 +1,7 @@
-var createSectionScroller = function(rootSelector) {
+var createSectionScroller = function(rootSelector, nextButtonSelector, previousButtonSelector) {
     var rootDiv = document.querySelector(rootSelector);
+    var nextButton = nextButtonSelector && document.querySelector(nextButtonSelector);
+    var previousButton = previousButtonSelector && document.querySelector(previousButtonSelector);
 
     if (!rootDiv) {
         var errorMessage = 'Couldn\'t find root element with selector: ' + rootSelector;
@@ -53,6 +55,20 @@ var createSectionScroller = function(rootSelector) {
         }
         activateCurrent();
     });
+
+    if (nextButton || previousButton) {
+        document.addEventListener('click', function(event) {
+            if (event.target.children[0] === nextButton) {
+                activeIndex++;
+                activeIndex = activeIndex % sectionIds.length;
+                activateCurrent();
+            } else if (event.target.children[0] === previousButton) {
+                activeIndex--;
+                if (activeIndex < 0) activeIndex = sectionIds.length - 1;
+                activateCurrent();
+            }
+        });
+    }
 
     return {};
 };
