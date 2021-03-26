@@ -64,3 +64,24 @@ h1 {
 .hidden {
     display: none;
 }
+
+.animated {
+    transform: translateY(-100%);
+}
+
+.slide-in {
+    animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+    animation: slide-out 0.5s forwards;
+}
+
+@keyframes slide-in {
+    100% { transform: translateY(0%); }
+}
+
+@keyframes slide-out {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-100%); }
+}
