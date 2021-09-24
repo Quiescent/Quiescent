@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 html,
 body {
     display: flex;
@@ -97,4 +101,8 @@ h3 {
     line-height: 116.18%;
 
     color: #4B5347;
+}
+
+h3:hover {
+    color: #4B5347AA;
 }
