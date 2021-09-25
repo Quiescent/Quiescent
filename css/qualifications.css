@@ -23,8 +23,6 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-
-    font-size: 20px;
 }
 
 h1 {
@@ -37,8 +35,6 @@ h1 {
     font-family: Playfair Display;
 
     font-weight: 500;
-
-    width: 45%;
 }
 
 .sections {
@@ -53,6 +49,60 @@ h1 {
     color: #fcfcfc;
     /* background-color: #252d39CF; */
 }
+
+/* Title font is too big. */
+@media only screen and (max-width: 1500px) {
+    body {
+        font-size: 15px;
+    }
+}
+
+/* Title font is too big. */
+@media only screen and (max-width: 1170px) {
+    body {
+        font-size: 12px;
+    }
+
+    .sections {
+        width: 60%;
+    }
+}
+
+/* Title font is too big. */
+@media only screen and (max-width: 720px) {
+    body {
+        font-size: 11px;
+    }
+
+    .sections {
+        width: 90%;
+    }
+}
+
+/* Title font is too big. */
+@media only screen and (max-width: 500px) {
+    body {
+        font-size: 10px;
+    }
+
+    .sections {
+        width: 95%;
+    }
+}
+
+/* /\* Title font is too big. *\/ */
+/* @media only screen and (max-width: 900px) { */
+/*     body { */
+/*         font-size: 10px; */
+/*     } */
+/* } */
+
+/* /\* Title font is too big. *\/ */
+/* @media only screen and (max-width: 800px) { */
+/*     body { */
+/*         font-size: 8px; */
+/*     } */
+/* } */
 
 .sections section {
     padding: 30px;
